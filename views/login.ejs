@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        <title>Eastern Indian Railway</title>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="https://www.searchpng.com/wp-content/uploads/2019/07/Indian-Railways-Logo-PNG-Image-715x715.jpg" width="30" height="30" alt="">
+                Welcome</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbar">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Schedules</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/sign-up">SignUp</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/log-in">LogIn</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <style>
+            .container .jumbotron {
+                background-image: url(https://resize.indiatvnews.com/en/resize/newbucket/1200_-/2020/07/vande-bharat-train-rep-1-1594457119.jpg);
+                
+            }
+        </style>
+
+        <div class="container">
+            <div class="jumbotron">
+                <h1>Log In</h1>
+                <p class="lead">Log in now and get every information on Indian Railways right away</p>
+            </div>
+            <form action="">
+                <small class="form-text">Haven't signed up yet? <a href="/sign-up">Sign Up</a></small>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="form-label" for="useremail">Username</label>
+                        <input id="useremail" class="form-control" type="email" placeholder="abc@gmail.com">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label" for="userpass">Password</label>
+                        <input id="userpass" class="form-control" type="password">
+                    </div>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-success">Log In!</button>
+            </form>
+        </div>
+    </body>
+</html>

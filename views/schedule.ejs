@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+        <title>Eastern Indian Railway</title>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="https://www.searchpng.com/wp-content/uploads/2019/07/Indian-Railways-Logo-PNG-Image-715x715.jpg" width="30" height="30" alt="">
+                Welcome</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbar">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Schedules</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/sign-up">SignUp</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/log-in">LogIn</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div id="carousel" class="carousel slide" data-bs-ride="carousel" data-bs-pause="hover" data-bs-interval="3000">
+            <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active">
+                    <img src="https://www.irctc.com/assets/images/sl1.jpg" class="slide-image" alt="">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://www.irctc.com/assets/images/sl3-old.jpg" class="slide-image" alt="">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://www.irctc.com/assets/images/sl4.jpg" class="slide-image" alt="">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://www.irctc.com/assets/images/e-ticketing.jpg" class="slide-image" alt="">
+                </div>
+            </div>
+            <a href="#carousel" class="carousel-control-prev" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </a>
+            <a href="#carousel" class="carousel-control-next" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div class="container">
+            <br><br>
+            <!-- <h3>You can check train schedules here</h3> -->
+            <h3>Check train schedules here:</h3>
+            <form action="/schedule" method="POST">
+                <div class="row justify-content-md-center">
+                    <div class="col-6">
+                        <label for="from" class="form-label">Where From:</label>
+                        <input id="from" class="form-control" type="text" name="from">
+                    </div>
+                    <div class="col-6">
+                        <label for="to" class="form-label">Where To:</label>
+                        <input id="to" class="form-control" type="text" name="to">
+                    </div>
+                </div>
+                <br>
+                <button class="btn btn-primary" type="submit">Search</button>
+                <br><br>
+            </form>
+            <% if(query) {%> 
+                <h1>Trains from <%= from %> to <%= to %>: </h1>
+                <% if(trains && trains.length) { %> 
+                    <table id="schedule">
+                        <tr id=table-head>
+                            <td>Number</td>
+                            <td>Departure</td>
+                            <td>Arrival</td>
+                        </tr>
+                        <!--% if(trains && trains.length) { %>  -->
+                        <% trains.forEach(train => { %> 
+                            <tr>
+                                <!--format time!!-->
+                                <% let dep_time = DateTime.fromObject(train.dep_time).toFormat("ccc',' HH':'mm") %> 
+                                <% let arr_time = DateTime.fromObject(train.arr_time).toFormat("ccc',' HH':'mm") %> 
+                                <td><%=train.number%></td>
+                                <td><%=dep_time%></td>
+                                <td><%=arr_time%></td>
+                            </tr>
+                        <% }); %> 
+                    </table>
+                <% } else { %>
+                    <h2 id="no-train-msg">No trains found!</h2>
+                <% } %> 
+            <% } %> 
+        </div>
+    </body>
+    <style>
+        #schedule{
+            font-size: 1.3em;
+        }
+        #schedule td{
+            width:140px;
+        }
+    </style>
+</html>
